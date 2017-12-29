@@ -1,0 +1,9 @@
+
+1.  iotMqtt/client/MQTTLinux.c  --  linux_read()
+    use select instead setsockopt, because liteOS seems don't support recv block
+2.  iotMqtt/client/MQTTLinux.c  --  NetworkConnect()
+    getaddrinfo() freeaddrinfo() is not support by liteOS, we use gethostbyname
+3.  iotRtmp/librtmp/rtmp.c  --  RTMP_Connect0()  RTMPSockBuf_Fill()  RTMP_GetTime()
+    use select instead setsockopt; use recv_timeout() instead of recv()
+    
+    
